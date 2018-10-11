@@ -4,11 +4,14 @@ import java.util.*;
 import com.company.Controller.Product;
 
 public class Transport {
-    TypeOfTransport.Type name;
-    LocalTime time ;
-    ArrayList<Product> Allorder;
-    boolean available;
-
+   public TypeOfTransport.Type name;
+    public LocalTime time ;
+    private ArrayList<Product> Allorder;
+    public boolean available;
+    public  Transport()
+    {
+        Allorder=new ArrayList<Product>();
+    }
     public Transport(TypeOfTransport.Type type, LocalTime t ,boolean mode ) {
         name = type;
         time = t;

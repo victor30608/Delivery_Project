@@ -9,9 +9,9 @@ import java.util.ArrayList;
  */
 
 public class Company {
-    Point place;
-    String address;
-    ArrayList<Transport> worker;
+    public Point place;
+    public String address;
+    public ArrayList<Transport> worker;
 
     public Company() {
         place = new Point();

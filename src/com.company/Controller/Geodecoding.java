@@ -8,7 +8,7 @@ import org.json.JSONObject;
 import com.google.common.collect.Maps;
 
 public class Geodecoding extends AbstractSample {
-    public void decode(String args,Point area) throws IOException, JSONException {
+    public static void decode(String args,Point area) throws IOException, JSONException {
         final String baseUrl = "https://maps.googleapis.com/maps/api/geocode/json";// путь к Geocoding API по HTTP
         final Map<String, String> params = Maps.newHashMap();
         params.put("sensor", "false");// исходит ли запрос на геокодирование от устройства с датчиком местоположения

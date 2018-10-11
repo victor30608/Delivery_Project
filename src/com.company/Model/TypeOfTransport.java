@@ -1,5 +1,5 @@
 package com.company.Model;
 
 public class TypeOfTransport {
-    enum Type {driving , walking , bicycling , transit , quadro}
+    public enum Type {driving , walking , bicycling , transit , quadro}
 }
