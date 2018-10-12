@@ -11,6 +11,9 @@ public class Transport {
     public  Transport()
     {
         Allorder=new ArrayList<Product>();
+        time =LocalTime.now();
+        name= TypeOfTransport.Type.driving;
+        available=true;
     }
     public Transport(TypeOfTransport.Type type, LocalTime t ,boolean mode ) {
         name = type;

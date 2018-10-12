@@ -35,13 +35,23 @@ public class Menu {
         mycomp.place=p;
         mycomp.address=addres1;
         Transport tr= new Transport();
-        tr.available=true;
-        tr.name= TypeOfTransport.Type.driving;
-        tr.time= LocalTime.now();
         mycomp.worker.add(tr);
-        tr.name= TypeOfTransport.Type.driving;
-        mycomp.worker.add(tr);
-        Configuration.saveconf(mycomp);
+        Transport pp = new Transport();
+        pp.name= TypeOfTransport.Type.quadro;
+        mycomp.worker.add(pp);
+        Company tt = new Company();
+        try {
+            Configuration.saveconf(mycomp);
+
+            Configuration.loadconf(tt);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
 
 //        String addres2=" Зеленоград, площадь Шокина , дом 1";
 //        Geodecoding a = new Geodecoding();
