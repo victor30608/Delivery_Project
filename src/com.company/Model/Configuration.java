@@ -33,10 +33,6 @@ public class Configuration {
                tmp.name= TypeOfTransport.Type.valueOf(work.getJSONObject(i).getString("name"));
                mycomp.worker.add(tmp);
              }
-             for (int i=0;i<mycomp.worker.size();i++)
-             {
-                 System.out.println(mycomp.worker.get(i).name);
-             }
              read.close();
     }
 
