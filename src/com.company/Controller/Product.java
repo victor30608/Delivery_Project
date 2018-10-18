@@ -4,10 +4,10 @@ import com.company.Point;
 import java.time.*;
 
 public class Product {
-    public int time;
+    public long time;
     public Point place;
     public LocalDateTime t_order;
-    public Product(int t, Point p, LocalDateTime tmp) {
+    public Product(long t, Point p, LocalDateTime tmp) {
         this.time = t;
         this.place.Setlng(p.Getlng());
         this.place.Setlat(p.Getlat());

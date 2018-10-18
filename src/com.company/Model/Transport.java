@@ -8,7 +8,7 @@ public class Transport {
     public LocalDateTime fordertime ;
     public ArrayList<Product> Allorder;
     public boolean available;
-    public int alltime;
+    public long alltime;
     public  Transport()
     {
         Allorder=new ArrayList<Product>();
