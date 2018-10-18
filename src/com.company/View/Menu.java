@@ -15,57 +15,57 @@ import java.util.Scanner;
  */
 public class Menu {
     public void start() {
-        Company mycomp=new Company();
-//        System.out.print("Adress of company: ");
-//        Scanner in = new Scanner(System.in);
-        Point p = new Point();
-        String addres1 ="Зеленоград, улица Юности, дом 11";
-        try
-        {
-            Geodecoding.decode(addres1, p);
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-        catch (JSONException e)
-        {
-            e.printStackTrace();
-        }
-//        Company mycomp = new Company();
-//        mycomp.place=p;
-//        mycomp.address=addres1;
-//        Transport tr= new Transport();
-//        mycomp.worker.add(tr);
-//        Transport pp = new Transport();
-//        pp.name= TypeOfTransport.Type.quadro;
-//        mycomp.worker.add(pp);
-//        Company tt = new Company();
-//        try {
-//            Configuration.saveconf(mycomp);
-//
-//            Configuration.loadconf(tt);
+//        Company mycomp=new Company();
+////        System.out.print("Adress of company: ");
+////        Scanner in = new Scanner(System.in);
+//        Point p = new Point();
+//        String addres1 ="Зеленоград, улица Юности, дом 11";
+//        try
+//        {
+//            Geodecoding.decode(addres1, p);
 //        }
-//        catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        catch (IOException e)
+//        catch(IOException e)
 //        {
 //            e.printStackTrace();
 //        }
-//
-        String addres2=" Зеленоград, площадь Шокина , дом 1";
-        Geodecoding a = new Geodecoding();
-        try {
-            System.out.println(DeliveryTime.calculate(p.toString(),addres2,"driving"));
-            System.out.println(DeliveryTime.calculate(addres1,addres2,"driving"));
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-        catch (JSONException e) {
-        e.printStackTrace();
-        }
+//        catch (JSONException e)
+//        {
+//            e.printStackTrace();
+//        }
+////        Company mycomp = new Company();
+////        mycomp.place=p;
+////        mycomp.address=addres1;
+////        Transport tr= new Transport();
+////        mycomp.worker.add(tr);
+////        Transport pp = new Transport();
+////        pp.name= TypeOfTransport.Type.quadro;
+////        mycomp.worker.add(pp);
+////        Company tt = new Company();
+////        try {
+////            Configuration.saveconf(mycomp);
+////
+////            Configuration.loadconf(tt);
+////        }
+////        catch (JSONException e) {
+////            e.printStackTrace();
+////        }
+////        catch (IOException e)
+////        {
+////            e.printStackTrace();
+////        }
+////
+//        String addres2=" Зеленоград, площадь Шокина , дом 1";
+//        Geodecoding a = new Geodecoding();
+//        try {
+//            System.out.println(DeliveryTime.calculate(p.toString(),addres2,"driving"));
+//            System.out.println(DeliveryTime.calculate(addres1,addres2,"driving"));
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//        catch (JSONException e) {
+//        e.printStackTrace();
+//        }
 //        System.out.print("Adress of company: ");
     }
 }

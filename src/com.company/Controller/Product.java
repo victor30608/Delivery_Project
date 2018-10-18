@@ -9,8 +9,7 @@ public class Product {
     public LocalDateTime t_order;
     public Product(long t, Point p, LocalDateTime tmp) {
         this.time = t;
-        this.place.Setlng(p.Getlng());
-        this.place.Setlat(p.Getlat());
+        place=new Point(p);
         this.t_order=tmp;
     }
 

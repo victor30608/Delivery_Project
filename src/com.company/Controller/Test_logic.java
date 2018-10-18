@@ -23,12 +23,13 @@ public class Test_logic {
 //            LocalDateTime time1 = LocalDateTime.now().plusMinutes(1000).plusWeeks(1);
 
 //            System.out.print(ChronoUnit.MINUTES.between(time1,time));
-            for(int i=0;i<10;i++)
+            for(int i=0;i<4;i++)
             {
                 String addres;
-                addres=in.next();
+                addres=in.nextLine();
                 Point p1 = new Point();
-                Geodecoding.decode(addres,p1);
+                p1=Geodecoding.decode(addres);
+                System.out.println(p1.toString()+"gg");
                 Product tmp=new Product(10,p1,LocalDateTime.now());
                 Allpr.add(tmp);
             }

@@ -13,8 +13,9 @@ public  class DeliveryTime  extends AbstractSample {
         {
             Point p1=new Point();
             Point p2=new Point();
-            Geodecoding.decode(addres1,p1);
-            Geodecoding.decode(addres2,p2);
+            p1=Geodecoding.decode(addres1);
+            p2=Geodecoding.decode(addres2);
+            double t= p1.distance(p1,p2)/50.0*60;
         }
          String baseUrl ="https://maps.googleapis.com/maps/api/directions/json";// путь к Geocoding API по
         // HTTP
