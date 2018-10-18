@@ -30,6 +30,14 @@ public class Transport {
         if(!available&&alltime<=40) available=true;
 
     }
+    public String allorder()
+    { String ans = new String();
+     for(Product i:Allorder)
+     {
+         ans=ans+i.place.name;
+     }
+     return ans;
+    }
     public int numoforder()
     {
         return Allorder.size();

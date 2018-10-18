@@ -3,6 +3,7 @@ package com.company;
 public class Point {
     private double lng;
     private double lat;
+    public String name;
     private static final double EARTH_RADIUS = 6371.;
 
     public Point() {

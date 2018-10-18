@@ -29,7 +29,7 @@ public class Test_logic {
                 addres=in.nextLine();
                 Point p1 = new Point();
                 p1=Geodecoding.decode(addres);
-                System.out.println(p1.toString()+"gg");
+                p1.name=addres;
                 Product tmp=new Product(10,p1,LocalDateTime.now());
                 Allpr.add(tmp);
             }

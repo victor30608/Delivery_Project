@@ -29,7 +29,7 @@ public  class DeliveryTime  extends AbstractSample {
         // долготы конечного пункта маршрута
         params.put("key","AIzaSyDkByDpKl6fWkpJOfp9BFMEM-_Xoc4WSsM");
          String url = baseUrl + '?' + encodeParams(params);// генерируем путь с параметрами
-        System.out.println(url); // Можем проверить что вернет этот путь в браузере
+//        System.out.println(url); // Можем проверить что вернет этот путь в браузере
          JSONObject response = JsonReader.read(url);// делаем запрос к вебсервису и получаем от него ответ
         // как правило наиболее подходящий ответ первый и данные о кординатах можно получить по пути
         // //results[0]/geometry/location/lng и //results[0]/geometry/location/lat
@@ -39,7 +39,7 @@ public  class DeliveryTime  extends AbstractSample {
             location = location.getJSONArray("legs").getJSONObject(0);
             String distance = location.getJSONObject("distance").getString("text");
             String duration = location.getJSONObject("duration").getString("text");
-            System.out.println(distance + "\n" + duration);
+//            System.out.println(distance + "\n" + duration);
 
             return Double.parseDouble(duration.substring(0,duration.length()-4));
         }
