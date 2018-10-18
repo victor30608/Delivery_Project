@@ -3,12 +3,19 @@ package com.company.Controller;
 import com.google.common.collect.Maps;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import com.company.Point;
 import java.io.IOException;
 import java.util.Map;
 
 public  class DeliveryTime  extends AbstractSample {
     public static double calculate(String addres1,String addres2,String mode) throws IOException, JSONException {
+        if(mode.equals("quadro"))
+        {
+            Point p1=new Point();
+            Point p2=new Point();
+            Geodecoding.decode(addres1,p1);
+            Geodecoding.decode(addres2,p2);
+        }
          String baseUrl ="https://maps.googleapis.com/maps/api/directions/json";// путь к Geocoding API по
         // HTTP
          Map<String, String> params = Maps.newHashMap();
