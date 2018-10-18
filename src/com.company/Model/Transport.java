@@ -1,25 +1,38 @@
 package com.company.Model;
-import java.time.*;
+import java.time.LocalDateTime;
 import java.util.*;
 import com.company.Controller.Product;
 
 public class Transport {
    public TypeOfTransport.Type name;
-    public LocalTime time ;
-    private ArrayList<Product> Allorder;
+    public LocalDateTime fordertime ;
+    public ArrayList<Product> Allorder;
     public boolean available;
+    public int alltime;
     public  Transport()
     {
         Allorder=new ArrayList<Product>();
-        time =LocalTime.now();
+        fordertime =LocalDateTime.now();
         name= TypeOfTransport.Type.driving;
         available=true;
+        alltime =0;
+
     }
-    public Transport(TypeOfTransport.Type type, LocalTime t ,boolean mode ) {
+    public Transport(TypeOfTransport.Type type, LocalDateTime t ,boolean mode ) {
         name = type;
-        time = t;
+        fordertime = t;
         Allorder=new ArrayList<Product>();
         available = mode;
+    }
+    public void checktime()
+    {
+        if(available&&alltime>40) available=false;
+        if(!available&&alltime<=40) available=true;
+
+    }
+    public int numoforder()
+    {
+        return Allorder.size();
     }
     public void set_avail(boolean mode)
     {

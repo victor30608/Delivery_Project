@@ -1,10 +1,11 @@
 package com.company.Controller;
 
-import java.io.IOException;
-import java.util.Map;
+import com.google.common.collect.Maps;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.google.common.collect.Maps;
+
+import java.io.IOException;
+import java.util.Map;
 
 public  class DeliveryTime  extends AbstractSample {
     public static double calculate(String addres1,String addres2,String mode) throws IOException, JSONException {
@@ -31,7 +32,8 @@ public  class DeliveryTime  extends AbstractSample {
             String distance = location.getJSONObject("distance").getString("text");
             String duration = location.getJSONObject("duration").getString("text");
             System.out.println(distance + "\n" + duration);
-            return Double.parseDouble(distance);
+
+            return Double.parseDouble(duration.substring(0,duration.length()-4));
         }
         System.out.println(status);
          return 0;
