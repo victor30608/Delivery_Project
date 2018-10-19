@@ -4,11 +4,13 @@ import com.company.Point;
 import java.time.*;
 
 public class Product {
+    public String name_prod;
     public long time;
     public Point place;
     public LocalDateTime t_order;
     public boolean av;
-    public Product(long t, Point p, LocalDateTime tmp) {
+    public Product(String n, long t, Point p, LocalDateTime tmp) {
+       this.name_prod = n;
         this.time = t;
         place=new Point(p);
         this.t_order=tmp;
