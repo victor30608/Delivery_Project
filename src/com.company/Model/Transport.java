@@ -34,7 +34,7 @@ public class Transport {
     { String ans = "";
      for(Product i:Allorder)
      {
-         ans=ans+i.place.name;
+         ans=ans+" "+i.place.name;
      }
      return ans;
     }
