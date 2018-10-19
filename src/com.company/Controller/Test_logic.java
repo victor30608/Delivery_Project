@@ -23,14 +23,14 @@ public class Test_logic {
 //            LocalDateTime time1 = LocalDateTime.now().plusMinutes(1000).plusWeeks(1);
 
 //            System.out.print(ChronoUnit.MINUTES.between(time1,time));
-            for(int i=0;i<4;i++)
+            for(int i=0;i<3;i++)
             {
                 String addres;
                 addres=in.nextLine();
                 Point p1 = new Point();
                 p1=Geodecoding.decode(addres);
                 p1.name=addres;
-                Product tmp=new Product(10,p1,LocalDateTime.now());
+                Product tmp=new Product(20,p1,LocalDateTime.now().plusMinutes(i*60));
                 System.out.println(p1.name);
                 Allpr.add(tmp);
             }

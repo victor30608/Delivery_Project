@@ -19,20 +19,35 @@ public class Calculation {
         for (Product i : AllProd) {
             free = false;
             for (Transport tr : MC.worker) {
+                if(!i.av) break;
                 tr.checktime();
-                if (tr.available == true) {
-                    int deltime = 0;
-                    if (tr.Allorder.size() == 0) {
-                        deltime = (int) DeliveryTime.calculate(MC.place.toString(), i.place.toString(), tr.name.toString());
-                        tr.alltime += deltime;//время , прошедшее с выезда
-                        tr.addProduct(i);
-                        free = true;
-                        tr.fordertime = i.t_order.plusMinutes((int) i.time); // время выезда из фирмы
-                        tr.fordertime = tr.fordertime.minusMinutes((int) deltime);// время выезда из фирмы для доставки 1 заказа
-                        break;
-                    } else {
+                int deltime = 0;
+                if (tr.Allorder.size() == 0)
+                {
+                    deltime = (int) DeliveryTime.calculate(MC.place.toString(), i.place.toString(), tr.name.toString());
+                    tr.alltime += deltime;//время , прошедшее с выезда
+                    tr.addProduct(i);
+                    free = true;
+                    tr.fordertime = i.t_order.plusMinutes((int) i.time); // время выезда из фирмы
+                    tr.fordertime = tr.fordertime.minusMinutes((int) deltime);// время выезда из фирмы для доставки 1 заказа
+                    i.av=false;
+                    break;
+                }
+                if (!tr.Allorder.get(tr.numoforder() - 1).place.name.equals(MC.address))
+                {
+                    long tobase = (int) DeliveryTime.calculate(tr.Allorder.get(tr.numoforder() - 1).place.toString(), MC.place.toString(), tr.name.toString());
+                    long t = ChronoUnit.MINUTES.between(tr.fordertime.plusMinutes(tobase + tr.alltime), i.t_order);
+                    if (t >= 0) {
+                        tr.fordertime = tr.fordertime.plusMinutes(tobase + tr.alltime);
+                        Product tmp = new Product(0, MC.place, tr.fordertime);
+                        tmp.place.name=MC.address;
+                        tr.addProduct(tmp);
+                        tr.alltime = 0;
+                        tr.available = true;
+                    }
+                }
                         double diff = -ChronoUnit.MINUTES.between(tr.fordertime, i.t_order); // был ли получен заказ до того, как транспорт "ушёл"
-                        if (diff > 0) {
+                        if (diff > 0||tr.Allorder.get(tr.numoforder() - 1).place.name.equals(MC.address)) {
                             deltime = (int) DeliveryTime.calculate(tr.Allorder.get(tr.numoforder() - 1).place.toString(), i.place.toString(), tr.name.toString());
                             double prevdel = DeliveryTime.calculate(tr.Allorder.get(tr.numoforder() - 1).place.toString(), MC.place.toString(), tr.name.toString());//время от последнего заказа к фирме
                             double basetothis = DeliveryTime.calculate(MC.place.toString(), i.place.toString(), tr.name.toString()); // время от  фирмы к текущему заказу
@@ -43,6 +58,7 @@ public class Calculation {
                                 tr.alltime = -ChronoUnit.MINUTES.between(i.t_order.plusMinutes(i.time), tr.fordertime);
                                 tr.available = true;
                                 tr.Allorder.add(i);
+                                i.av=false;
                                 free = true;
                                 break;
                             } else {
@@ -50,27 +66,20 @@ public class Calculation {
                                 if (razn <= 0) {
                                     tr.addProduct(i);
                                     tr.alltime = -ChronoUnit.MINUTES.between(i.t_order.plusMinutes(i.time), tr.fordertime);
+                                    i.av=false;
                                     break;
                                 }
                             }
                         }
                     }
-                } else {
-                    tr.fordertime = tr.fordertime.plusMinutes(tr.alltime);
-                    long tobase = (int) DeliveryTime.calculate(tr.Allorder.get(tr.numoforder() - 1).place.toString(), MC.place.toString(), tr.name.toString());
-                    tr.fordertime = tr.fordertime.plusMinutes(tobase);
-                    tr.alltime = 0;
-                    tr.available = true;
-                    break;
                 }
 
-            }
-        }
-        for(Transport tr:MC.worker)
-        {
+        int i=1;
+        for(Transport tr:MC.worker) {
 
-            System.out.println(tr.name+" "+tr.allorder());
+            System.out.println(i);
+            System.out.println(tr.name + " " + tr.alltime+" "+tr.fordertime+" "+tr.allorder());
+            i++;
         }
-
     }
 }
