@@ -44,11 +44,13 @@ public class Calculation {
                                 tr.available = true;
                                 tr.Allorder.add(i);
                                 free = true;
+                                break;
                             } else {
                                 double razn = -ChronoUnit.MINUTES.between(tr.fordertime.plusMinutes(tr.alltime + deltime), i.t_order.plusMinutes(i.time));
                                 if (razn <= 0) {
                                     tr.addProduct(i);
                                     tr.alltime = -ChronoUnit.MINUTES.between(i.t_order.plusMinutes(i.time), tr.fordertime);
+                                    break;
                                 }
                             }
                         }
@@ -59,13 +61,15 @@ public class Calculation {
                     tr.fordertime = tr.fordertime.plusMinutes(tobase);
                     tr.alltime = 0;
                     tr.available = true;
+                    break;
                 }
 
             }
         }
         for(Transport tr:MC.worker)
         {
-            System.out.println(tr.allorder());
+
+            System.out.println(tr.name+" "+tr.allorder());
         }
 
     }

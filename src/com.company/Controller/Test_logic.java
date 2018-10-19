@@ -31,6 +31,7 @@ public class Test_logic {
                 p1=Geodecoding.decode(addres);
                 p1.name=addres;
                 Product tmp=new Product(10,p1,LocalDateTime.now());
+                System.out.println(p1.name);
                 Allpr.add(tmp);
             }
          Calculation.calculate(My,Allpr);

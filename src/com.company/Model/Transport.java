@@ -31,7 +31,7 @@ public class Transport {
 
     }
     public String allorder()
-    { String ans = new String();
+    { String ans = "";
      for(Product i:Allorder)
      {
          ans=ans+i.place.name;

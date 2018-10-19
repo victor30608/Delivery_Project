@@ -19,6 +19,7 @@ public class Point {
     public Point(Point b) {
         this.lng = b.Getlng();
         this.lat = b.Getlat();
+        this.name=b.name;
     }
 
     public void Setlng(double lng) {
@@ -56,7 +57,7 @@ public class Point {
         final double a = Math.sin(dlat / 2) * Math.sin(dlat / 2) + Math.cos(deg2rad(Point2.lat))
                 * Math.cos(deg2rad(Point1.lat)) * Math.sin(dlng / 2) * Math.sin(dlng / 2);
         final double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        System.out.println("distance: " + c * EARTH_RADIUS); // получаем расстояние в километрах
+//        System.out.println("distance: " + c * EARTH_RADIUS); // получаем расстояние в километрах
         return c * EARTH_RADIUS;
     }
 
